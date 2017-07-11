@@ -6,3 +6,5 @@ var '' = function(top, left, timeBetweenSteps) {
 
 ''.prototype = Object.create(Dancer.prototype);
 ''newDancer''.prototype.constructor = ;
+
+//clippy dancer

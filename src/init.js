@@ -27,7 +27,20 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
+  });
+
+  $('groupButton').on('click', function(event) {
+    //line up various elemnts on page
+    //to be specified
+    //get window size
+    // loop through elements in window.dancers
+      //move each to a planned location based on some criteria
+      
+
+
+
   });
 });
 
