@@ -23,24 +23,31 @@ $(document).ready(function() {
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
+      Math.floor($("body").height() * Math.random()),
+      Math.floor($("body").width() * Math.random()),
+      2000
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
 
-  $('groupButton').on('click', function(event) {
+  $('.groupButton').on('click', function(event) {
     //line up various elemnts on page
     //to be specified
     //get window size
+    var top = '75%';
+    var left = 10;
+    var increment = $('body').width() / window.dancers.length;
     // loop through elements in window.dancers
-      //move each to a planned location based on some criteria
-      
+    for (var i = 0; i < window.dancers.length; i++) {
+      // move each to 75% of screen height and space evenly across the screen from left to right
+      window.dancers[i].lineUp(top, left);
+      left += increment;
+    }
+  });
 
-
-
+  $(document).on('click', '.errorMessage', function(event) {
+    this.remove();
   });
 });
 

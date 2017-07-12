@@ -29,3 +29,7 @@ body, a:link, a:visited, a:active{
   height: 100px;
   position:absolute;
 }
+
+.disapear{
+  visibility: hidden;
+}

@@ -24,3 +24,12 @@ Dancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+Dancer.prototype.lineUp = function(top, left) {
+  //animate movement from original position to specified location
+  this.$node.animate({
+    top: top,
+    left: left
+  }, 2000);
+
+};
