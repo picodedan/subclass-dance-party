@@ -32,6 +32,8 @@ WinIconDancer.prototype.step = function() {
   // looop through window.dancers
     //at each dancer check if it's position is close to =/= this position
       //if true create new errorMsgDancer at this location.
+    //https://stackoverflow.com/questions/6837167/jquery-animate-collision-detection
+
 };
 
 //gify classic windows icon dancer
