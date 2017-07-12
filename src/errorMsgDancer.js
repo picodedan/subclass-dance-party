@@ -5,7 +5,7 @@ var ErrorMsgDancer = function(top, left, timeBetweenSteps) {
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   this.oldStep = Dancer.prototype.step;
-  this.$audio = $('#error');
+  $('#error').get(0).play();
   this.$node.css('width', '200px');
   this.step();
 };
@@ -15,8 +15,9 @@ ErrorMsgDancer.prototype.constructor = ErrorMsgDancer;
 
 ErrorMsgDancer.prototype.step = function() {
   this.oldStep();
-  this.$audio.get(0).currentTime = 0;
-  this.$audio.get(0).play();
+  //this.$audio.get(0).currentTime = 0;
+  //this.$audio.get(0).play();
+  //console.log(this);
 };
 
 // add on mouseover handler to remove element 

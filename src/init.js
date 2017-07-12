@@ -47,7 +47,53 @@ $(document).ready(function() {
   });
 
   $(document).on('click', '.errorMessage', function(event) {
+    window.dancers = [];
     this.remove();
   });
+
+  function collisionTest(elem1, elem2) {
+    var left1 = elem1.offset().left;
+    var top1 = elem1.offset().top;
+    var height1 = elem1.outerHeight(true);
+    var width1 = elem1.outerWidth(true);
+    var bottom1 = top1 + height1;
+    var right1 = left1 + width1;
+    var left2 = elem2.offset().left;
+    var top2 = elem2.offset().top;
+    var height2 = elem2.outerHeight(true);
+    var width2 = elem2.outerWidth(true);
+    var bottom2 = top2 + height2;
+    var right2 = left2 + width2;
+
+    if (bottom1 < top2 || top1 > bottom2 || right1 < left2 || left1 > right2) {
+      return false;
+    } else {
+      return true;
+    };
+
+  }
+
+  window.setInterval(function() {
+    var dancing = window.dancers;
+    //loop through window.dancers
+    for (var i = 1; i < dancing.length; i++) {
+      //if collision is detected
+      if (collisionTest(dancing[i].$node, dancing[i-1].$node)) {
+        var refNode = dancing[i].$node.offset();
+        var top = refNode.top;
+        var left = refNode.left;
+        var dancer = new ErrorMsgDancer(top, left, 2000);
+        window.dancers.push(dancer);
+        //remove elements that collided
+        dancing[i].$node.remove();
+        dancing[i-1].$node.remove();
+        window.dancers.splice(i-1, 2);
+        //create errorMSg Dancer
+        $('body').append(dancer.$node);
+      }
+
+    }
+  }, 500);
+
 });
 
